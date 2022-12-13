@@ -30,15 +30,15 @@ jobs:
       uses: docker/build-push-action@v3.2.0
       with:
        push: true
-       tags: index.docker.io/<TODO>:${{ github.sha }}
+       tags: index.docker.io/abbenedek/streamlitapp
        file: ./Dockerfile
        
     - name: Azure WebApp
       uses: Azure/webapps-deploy@v2.2.5
       with:
         # Name of the Azure Web App
-        app-name: <TODO>
+        app-name: benswebservice
         # Applies to Web Apps(Windows and Linux) and Web App Containers(linux). Multi container scenario not supported. Publish profile (*.publishsettings) file contents with Web Deploy secrets
-        publish-profile: <publishData><publishProfile profileName="fhtw-22-12 - Web Deploy" publishMethod="MSDeploy" publishUrl="<TODO>.scm.azurewebsites.net:443" msdeploySite="<TODO>" userName="$<TODO>" userPWD="<TODO PW>" destinationAppUrl="https://<TODO>.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="<TODO> - FTP" publishMethod="FTP" publishUrl="ftps://waws-prod-am2-345.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="<TODO>\$<TODO>" userPWD="oT5y88tpbhjg9mZZ4FMvWgsmJ2dHESMHJ4ytlNilwRRPhPmkG7zisqzTQ2qP" destinationAppUrl="https://fhtw-22-12.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="fhtw-22-12 - Zip Deploy" publishMethod="ZipDeploy" publishUrl="fhtw-22-12.scm.azurewebsites.net:443" userName="$fhtw-22-12" userPWD="<TODO PW>" destinationAppUrl="https://<TODO>.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
+        publish-profile: <publishData><publishProfile profileName="benswebservice - Web Deploy" publishMethod="MSDeploy" publishUrl="benswebservice.scm.azurewebsites.net:443" msdeploySite="benswebservice" userName="$ben" userPWD="password1234" destinationAppUrl="https://benswebservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="benswebservice - FTP" publishMethod="FTP" publishUrl="ftps://waws-prod-am2-345.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="benswebservice\$benswebservice" userPWD="password1234" destinationAppUrl="https://benswebservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="fhtw-22-12 - Zip Deploy" publishMethod="ZipDeploy" publishUrl="fhtw-22-12.scm.azurewebsites.net:443" userName="$fhtw-22-12" userPWD="<TODO PW>" destinationAppUrl="https://benswebservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
         # Enter an existing Slot other than the Production slot
-        images: index.docker.io/<TODO>:${{ github.sha }}
+        images: index.docker.io/benswebservice:${{ github.sha }}
